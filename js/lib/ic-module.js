@@ -23,7 +23,7 @@ angular.module('InfoCompassModule',[
 
 		//$animateProvider.classNameFilter(/animate-me/)
 
-		icApiProvider.setBase('http://213.187.84.22:3000')
+		icApiProvider.setBase('http://127.0.0.1:3000')
 
 
 		smlLayoutProvider.setModes([			
