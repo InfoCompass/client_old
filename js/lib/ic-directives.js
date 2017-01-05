@@ -750,6 +750,9 @@ angular.module('icDirectives', [
 				}
 
 				scope.recreateUsers = function(){
+
+					icOverlays.open('spinner')
+
 					return	icApi.recreateUsers()
 							.then(
 								function(){
@@ -763,6 +766,9 @@ angular.module('icDirectives', [
 				}
 
 				scope.parseFrontendMessages = function(){
+					
+					icOverlays.open('spinner')
+
 					return 	icApi.parseFrontendMessages()
 							.then(
 								function(){
@@ -2413,11 +2419,11 @@ angular.module('icDirectives', [
 			toLocaleDateStringSupportsLocales =  e instanceof RangeError
 		}
 
-		function icDateFilter(date_str){
+		function icDateFilter(date_str, use_time){
 			var d = new Date(date_str)
 
 			if(toLocaleDateStringSupportsLocales){
-				return d.toLocaleDateString(icLanguages.currentLanguage)
+				return 	d.toLocaleDateString(icLanguages.currentLanguage) + (use_time ? ' ' + d.toLocaleTimeString(icLanguages.currentLanguage) : '')
 			} else {
 				return date_str
 			}
@@ -2579,11 +2585,12 @@ angular.module('icDirectives', [
 						},
 						function(reason){
 							var messages = 	{
-												'unknown user': 	'INTERFACE.UNKNOWN_USERNAME',
-												'invalid password':	'INTERFACE.INVALID_PASSWORD',
+												'unknown user': 	'INTERFACE.LOGIN_UNKNOWN_USERNAME',
+												'invalid password':	'INTERFACE.LOGIN_INVALID_PASSWORD',
+												'locked account':	'INTERFACE.LOGIN_ACCOUNT_LOCKED'
 											}
 
-							return icOverlays.open('login', messages[reason], icOverlays.deferred.login, true)
+							return icOverlays.open('login', messages[reason] || 'INTERFACE.UNKNOWN', icOverlays.deferred.login, true)
 						}
 					)
 				}

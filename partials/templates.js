@@ -158,6 +158,25 @@ angular.module('InfoCompass').run(['$templateCache', function($templateCache) {
     "		{{'INTERFACE.SORT_DATE' | translate}}\n" +
     "	</a>\n" +
     "\n" +
+    "	<a \n" +
+    "		ng-show		= \"icUser.can('edit_items')\"\n" +
+    "		ng-click	= \"icFilterConfig.orderBy = 'created_on'\"\n" +
+    "		ng-class 	= \"{'icon-interface-radio-selected' : icFilterConfig.orderBy == 'created_on', 'icon-interface-radio': icFilterConfig.orderBy != 'created_on'}\"\n" +
+    "		ic-touch-me\n" +
+    "	> \n" +
+    "		{{'INTERFACE.SORT_CREATION_DATE' | translate}}\n" +
+    "	</a>\n" +
+    "\n" +
+    "		<a \n" +
+    "		ng-show		= \"icUser.can('edit_items')\"\n" +
+    "		ng-click	= \"icFilterConfig.orderBy = 'last_edit_on'\"\n" +
+    "		ng-class 	= \"{'icon-interface-radio-selected' : icFilterConfig.orderBy == 'last_edit_on', 'icon-interface-radio': icFilterConfig.orderBy != 'last_edit_on'}\"\n" +
+    "		ic-touch-me\n" +
+    "	> \n" +
+    "		{{'INTERFACE.SORT_LAST_EDIT' | translate}}\n" +
+    "	</a>\n" +
+    "\n" +
+    "\n" +
     "</div>\n" +
     "\n" +
     "\n" +
@@ -268,6 +287,7 @@ angular.module('InfoCompass').run(['$templateCache', function($templateCache) {
     "\n" +
     "\n" +
     "\n" +
+    "\n" +
     "</div>\n"
   );
 
@@ -275,9 +295,27 @@ angular.module('InfoCompass').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/ic-full-item.html',
     "<ic-unavailable ng-if =\"!loading && !item\"></ic-unavailable>\n" +
     "\n" +
+    "<div class = \"meta\">\n" +
+    "	<div \n" +
+    "		ng-if	= \"icUser.can('add_new_items') && (item.meta.created_on || item.created_by)\"\n" +
+    "		class 	= \"nondescript\"\n" +
+    "	>\n" +
+    "		{{'INTERFACE.CREATED_BY' | translate}} {{item.meta.created_by || ('INTERFACE.UNKNOWN' | translate) }}, {{ (item.meta.created_on | icDate : true) || ('INTERFACE.UNKNOWN' | translate)}}\n" +
+    "	</div>\n" +
+    "\n" +
+    "	<div \n" +
+    "		ng-if	= \"icUser.can('edit_items')  && (item.meta.last_edit_on || item.last_edit_by)\"\n" +
+    "		class 	= \"nondescript\"\n" +
+    "	>\n" +
+    "		{{'INTERFACE.LAST_EDIT_BY' | translate}} {{item.meta.last_edit_by || ('INTERFACE.UNKNOWN' | translate) }}, {{ (item.meta.last_edit_on| icDate : true) || ('INTERFACE.UNKNOWN' | translate)}}\n" +
+    "	</div>\n" +
+    "</div>\n" +
+    "\n" +
     "<article \n" +
     "	ng-if = \"item && !editMode\"\n" +
     ">\n" +
+    "\n" +
+    "\n" +
     "	<h2 ng-if = \"item.state == 'new' && icUser.can('add_new_items')\"> 		{{ 'INTERFACE.ADD_NEW_ITEM'		| translate }}</h2>\n" +
     "	<h2 ng-if = \"item.state == 'new' && icUser.can('suggest_new_items')\"> 	{{ 'INTERFACE.SUGGEST_NEW_ITEM'	| translate }}</h2>\n" +
     "\n" +

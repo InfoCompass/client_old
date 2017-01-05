@@ -87,6 +87,25 @@
 		{{'INTERFACE.SORT_DATE' | translate}}
 	</a>
 
+	<a 
+		ng-show		= "icUser.can('edit_items')"
+		ng-click	= "icFilterConfig.orderBy = 'created_on'"
+		ng-class 	= "{'icon-interface-radio-selected' : icFilterConfig.orderBy == 'created_on', 'icon-interface-radio': icFilterConfig.orderBy != 'created_on'}"
+		ic-touch-me
+	> 
+		{{'INTERFACE.SORT_CREATION_DATE' | translate}}
+	</a>
+
+		<a 
+		ng-show		= "icUser.can('edit_items')"
+		ng-click	= "icFilterConfig.orderBy = 'last_edit_on'"
+		ng-class 	= "{'icon-interface-radio-selected' : icFilterConfig.orderBy == 'last_edit_on', 'icon-interface-radio': icFilterConfig.orderBy != 'last_edit_on'}"
+		ic-touch-me
+	> 
+		{{'INTERFACE.SORT_LAST_EDIT' | translate}}
+	</a>
+
+
 </div>
 
 
@@ -193,6 +212,7 @@
 			{{'INTERFACE.ITEM_STATE_%s' | fill : state |translate}}
 		</a>
 	</div>
+
 
 
 

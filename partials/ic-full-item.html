@@ -1,8 +1,26 @@
 <ic-unavailable ng-if ="!loading && !item"></ic-unavailable>
 
+<div class = "meta">
+	<div 
+		ng-if	= "icUser.can('add_new_items') && (item.meta.created_on || item.created_by)"
+		class 	= "nondescript"
+	>
+		{{'INTERFACE.CREATED_BY' | translate}} {{item.meta.created_by || ('INTERFACE.UNKNOWN' | translate) }}, {{ (item.meta.created_on | icDate : true) || ('INTERFACE.UNKNOWN' | translate)}}
+	</div>
+
+	<div 
+		ng-if	= "icUser.can('edit_items')  && (item.meta.last_edit_on || item.last_edit_by)"
+		class 	= "nondescript"
+	>
+		{{'INTERFACE.LAST_EDIT_BY' | translate}} {{item.meta.last_edit_by || ('INTERFACE.UNKNOWN' | translate) }}, {{ (item.meta.last_edit_on| icDate : true) || ('INTERFACE.UNKNOWN' | translate)}}
+	</div>
+</div>
+
 <article 
 	ng-if = "item && !editMode"
 >
+
+
 	<h2 ng-if = "item.state == 'new' && icUser.can('add_new_items')"> 		{{ 'INTERFACE.ADD_NEW_ITEM'		| translate }}</h2>
 	<h2 ng-if = "item.state == 'new' && icUser.can('suggest_new_items')"> 	{{ 'INTERFACE.SUGGEST_NEW_ITEM'	| translate }}</h2>
 

@@ -550,6 +550,10 @@ ic-full-item ic-spinner {
 	font-size:				3rem;
 }
 
+ic-full-item .meta {
+	margin-bottom:			1rem;
+}
+
 ic-full-item h2 {
 	font-weight:			500;
 	font-size:				1.5rem;

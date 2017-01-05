@@ -678,7 +678,7 @@ angular.module('icServices', [
 												website:		'website',
 												facebook:		'facebook',
 												twitter:		'twitter',
-												instagram:		'instagram',
+												//instagram:		'instagram',
 												primaryTopic:	'primary_topic',
 												address:		'address', 
 												phone:			'phone', 
@@ -697,7 +697,8 @@ angular.module('icServices', [
 
 				rawHashes				=	{
 												definition:		'definitions',
-												description:	'descriptions_full'
+												description:	'descriptions_full',
+												meta:			'meta'
 											},
 
 				rawArrays				=	{
