@@ -693,6 +693,7 @@ angular.module('icServices', [
 												endDate:		'end_date',
 												latitude:		'latitude',
 												longitude:		'longitude',
+												comment:		'comment',
 											},
 
 				rawHashes				=	{
@@ -768,7 +769,7 @@ angular.module('icServices', [
 			}
 
 
-			function getData(key, subkey, comment){
+			function getData(key, subkey){
 				var export_data = icItem.exportData(),
 					data		= {},
 					e_key		= rawStringProperties[key] || rawHashes[key] || rawArrays[key],
@@ -777,10 +778,6 @@ angular.module('icServices', [
 
 				if(e_key)		data[e_key] 			= {}
 				if(e_subkey)	data[e_key][e_subkey]	= {}
-
-				export_data.comment = comment
-				data.comment 		= comment
-
 
 				if(subkey){
 					data[e_key][e_subkey] = export_data[e_key][e_subkey]
@@ -805,17 +802,17 @@ angular.module('icServices', [
 				return export_data
 			}
 
-			icItem.update = function(key, subkey, comment){
+			icItem.update = function(key, subkey){
 
-				return 	icApi.updateItem(icItem.id, getData(key, subkey, comment))
+				return 	icApi.updateItem(icItem.id, getData(key, subkey))
 						.then(function(item_data){
 							return item_data
 						})
 			}
 
 
-			icItem.submitAsNew = function(comment){
-				return icApi.newItem(getData(null, null, comment))
+			icItem.submitAsNew = function(){
+				return icApi.newItem(getData(null, null))
 			}
 
 

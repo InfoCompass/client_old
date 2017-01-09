@@ -188,7 +188,9 @@ input:-webkit-autofill:focus{
 	justify-content:		space-between;
 }
 
-
+.wsp {
+	white-space:			pre;
+}
 
 /* weight */
 

@@ -1,7 +1,7 @@
 <ic-unavailable ng-if ="!loading && !item"></ic-unavailable>
 
-<div class = "meta">
-	<div 
+<div class = "meta screen-only">
+	<div  
 		ng-if	= "icUser.can('add_new_items') && (item.meta.created_on || item.created_by)"
 		class 	= "nondescript"
 	>
@@ -220,6 +220,11 @@
 
 	<hr />
 
+	<div 
+		ng-if = "icUser.can('edit_items') && item.comment"
+		class = "nondescript screen-only wsp"
+	>{{item.comment}}</div> <!-- dont insert linebreaks here -->
+
 	<div class = "logo print-only">
 		<ic-text-logo></ic-text-logo> Berlin
 	</div>
@@ -228,8 +233,8 @@
 		www.info-compass.eu
 	</div>
 
-</article>
 
+</article>
 
 
 <!-- EDIT MODE -->
@@ -404,19 +409,14 @@
 
 	<!-- Suggestion comment -->
 
-	<h4 ng-show = "(icUser.can('suggest_new_items') || icUser.can('suggest_item_edits'))">{{ 'INTERFACE.COMMENT_SUGGESTION' | translate }}</h4>
-	<textarea
-		ng-show 	= "(icUser.can('suggest_new_items') || icUser.can('suggest_item_edits'))"
-		ng-model	= "data.comment"
-		rows		= "5"
-		ic-auto-grow
-	></textarea>
-	<div 
-		ng-show = "(icUser.can('suggest_new_items') || icUser.can('suggest_item_edits'))"
-		class 	= "annotation"
-	>
-		{{'INTERFACE.ITEM_COMMENT_REQUIREMENT' | translate}}
-	</div>
+	<ic-item-edit-property
+		ng-if					= "icUser.can('edit_items') || icUser.can('add_new_items') || icUser.can('suggest_item_edits') || icUser.can('suggest_new_items')"
+		ic-type					= "text"
+		ic-key					= "comment"
+		ic-item					= "item"
+		ic-ignore-current-value	= "!icUser.can('edit_items')" 
+	></ic-item-edit-property>
+
 
 </article>
 

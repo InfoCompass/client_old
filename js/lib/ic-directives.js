@@ -307,9 +307,6 @@ angular.module('icDirectives', [
 				scope.icUser			= icUser
 
 				scope.editMode			= false
-				scope.data				= 	{
-												comment:''
-											}
 
 				scope.edit = function() {
 					scope.editMode = true
@@ -429,7 +426,7 @@ angular.module('icDirectives', [
 				scope.submitEditSuggestions = function(){
 					beforeSubmission()
 					
-					scope.itemEdit.update(null,  null, scope.data.comment)
+					scope.itemEdit.update(null,  null)
 					.then(
 						function(item_data){
 							return	icOverlays.open('popup', 'INTERFACE.EDIT_SUGGESTION_SUBMITTED')
@@ -456,7 +453,7 @@ angular.module('icDirectives', [
 				scope.submitItemSuggestion = function(){
 					beforeSubmission()
 					
-					scope.itemEdit.submitAsNew(null, null, scope.data.comment)
+					scope.itemEdit.submitAsNew(null, null)
 					.then(
 						function(){
 							return	icOverlays.open('popup', 'INTERFACE.ITEM_SUGGESTION_SUBMITTED')
@@ -2208,6 +2205,7 @@ angular.module('icDirectives', [
 								icType:					"@",
 								icOptions:				"<",
 								icOptionLabel:			"&",
+								icIgnoreCurrentValue:	"<"
 							},
 
 			templateUrl: 	"partials/ic-item-edit-property.html",
@@ -2221,7 +2219,6 @@ angular.module('icDirectives', [
 				scope.value				=	{}
 				scope.expand			=	undefined
 				scope.showCurrentValue	=	scope.icItem.state != 'new'
-
 
 				scope.update = function(){
 					scope.updating = true
@@ -2297,8 +2294,13 @@ angular.module('icDirectives', [
 													?	scope.icItem[scope.icKey][icLanguages.currentLanguage] 
 													:	scope.icItem[scope.icKey]
 												)
-
-					if(!scope.value.new || scope.value.new.length == 0) scope.value.new = angular.copy(scope.value.current)
+					//workaround, actualy the backend should never hand out this value if it is to be ignored:
+					if(scope.icIgnoreCurrentValue){
+						scope.value.current = ''
+					}else{
+						//keep this, when workaround is no longer neccessary:
+						if(!scope.value.new || scope.value.new.length == 0) scope.value.new = angular.copy(scope.value.current)
+					}
 
 					scope.expand = (scope.expand === undefined ? scope.value.new || undefined : scope.expand)
 				}

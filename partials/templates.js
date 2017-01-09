@@ -295,8 +295,8 @@ angular.module('InfoCompass').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/ic-full-item.html',
     "<ic-unavailable ng-if =\"!loading && !item\"></ic-unavailable>\n" +
     "\n" +
-    "<div class = \"meta\">\n" +
-    "	<div \n" +
+    "<div class = \"meta screen-only\">\n" +
+    "	<div  \n" +
     "		ng-if	= \"icUser.can('add_new_items') && (item.meta.created_on || item.created_by)\"\n" +
     "		class 	= \"nondescript\"\n" +
     "	>\n" +
@@ -515,6 +515,11 @@ angular.module('InfoCompass').run(['$templateCache', function($templateCache) {
     "\n" +
     "	<hr />\n" +
     "\n" +
+    "	<div \n" +
+    "		ng-if = \"icUser.can('edit_items') && item.comment\"\n" +
+    "		class = \"nondescript screen-only wsp\"\n" +
+    "	>{{item.comment}}</div> <!-- dont insert linebreaks here -->\n" +
+    "\n" +
     "	<div class = \"logo print-only\">\n" +
     "		<ic-text-logo></ic-text-logo> Berlin\n" +
     "	</div>\n" +
@@ -523,8 +528,8 @@ angular.module('InfoCompass').run(['$templateCache', function($templateCache) {
     "		www.info-compass.eu\n" +
     "	</div>\n" +
     "\n" +
-    "</article>\n" +
     "\n" +
+    "</article>\n" +
     "\n" +
     "\n" +
     "<!-- EDIT MODE -->\n" +
@@ -699,19 +704,14 @@ angular.module('InfoCompass').run(['$templateCache', function($templateCache) {
     "\n" +
     "	<!-- Suggestion comment -->\n" +
     "\n" +
-    "	<h4 ng-show = \"(icUser.can('suggest_new_items') || icUser.can('suggest_item_edits'))\">{{ 'INTERFACE.COMMENT_SUGGESTION' | translate }}</h4>\n" +
-    "	<textarea\n" +
-    "		ng-show 	= \"(icUser.can('suggest_new_items') || icUser.can('suggest_item_edits'))\"\n" +
-    "		ng-model	= \"data.comment\"\n" +
-    "		rows		= \"5\"\n" +
-    "		ic-auto-grow\n" +
-    "	></textarea>\n" +
-    "	<div \n" +
-    "		ng-show = \"(icUser.can('suggest_new_items') || icUser.can('suggest_item_edits'))\"\n" +
-    "		class 	= \"annotation\"\n" +
-    "	>\n" +
-    "		{{'INTERFACE.ITEM_COMMENT_REQUIREMENT' | translate}}\n" +
-    "	</div>\n" +
+    "	<ic-item-edit-property\n" +
+    "		ng-if					= \"icUser.can('edit_items') || icUser.can('add_new_items') || icUser.can('suggest_item_edits') || icUser.can('suggest_new_items')\"\n" +
+    "		ic-type					= \"text\"\n" +
+    "		ic-key					= \"comment\"\n" +
+    "		ic-item					= \"item\"\n" +
+    "		ic-ignore-current-value	= \"!icUser.can('edit_items')\" \n" +
+    "	></ic-item-edit-property>\n" +
+    "\n" +
     "\n" +
     "</article>\n" +
     "\n" +
