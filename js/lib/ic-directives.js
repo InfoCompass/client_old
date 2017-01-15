@@ -2294,11 +2294,11 @@ angular.module('icDirectives', [
 													?	scope.icItem[scope.icKey][icLanguages.currentLanguage] 
 													:	scope.icItem[scope.icKey]
 												)
-					//workaround, actualy the backend should never hand out this value if it is to be ignored:
+					//workaround, actually the backend should never hand out this value if it is to be ignored:
 					if(scope.icIgnoreCurrentValue){
 						scope.value.current = ''
 					}else{
-						//keep this, when workaround is no longer neccessary:
+						//keep this until workaround is no longer neccessary:
 						if(!scope.value.new || scope.value.new.length == 0) scope.value.new = angular.copy(scope.value.current)
 					}
 

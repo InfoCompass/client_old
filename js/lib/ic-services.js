@@ -735,9 +735,9 @@ angular.module('icServices', [
 
 
 				//Strings:			
-				for( key in rawStringProperties)	{ icItem[key] = data[rawStringProperties[key]] 	== undefined ? icItem[key]	: data[rawStringProperties[key]] }
+				for( key in rawStringProperties)	{ icItem[key] = data[rawStringProperties[key]] 	=== undefined ? icItem[key]	: data[rawStringProperties[key]] }
 				for( key in rawHashes)				{ angular.merge(icItem[key], data[rawHashes[key]]) }
-				for( key in rawArrays)				{ icItem[key] = data[rawArrays[key]] 			== undefined ? icItem[key] 	: (data[rawArrays[key]] || []) }
+				for( key in rawArrays)				{ icItem[key] = data[rawArrays[key]] 			=== undefined ? icItem[key] 	: (data[rawArrays[key]] || []) }
 
 
 				//special properties:
