@@ -384,11 +384,20 @@
 	<!-- misc -->
 
 	<ic-item-edit-property
-		ng-repeat				= "key in ['price', 'maxParticipants', 'longitude', 'latitude']"
+		ng-repeat				= "key in ['maxParticipants', 'longitude', 'latitude']"
 		ic-type 				= "string"
 		ic-key					= "{{key}}"
 		ic-item					= "item"
 		ic-translatable			= "false"
+	></ic-item-edit-property>
+
+	<ic-item-edit-property
+		ng-repeat				= "key in ['price']"
+		ic-type 				= "string"
+		ic-key					= "{{key}}"
+		ic-item					= "item"
+		ic-translatable			= "false"
+		ic-force-number			= "true"
 	></ic-item-edit-property>
 
 

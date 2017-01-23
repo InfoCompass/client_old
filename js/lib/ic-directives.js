@@ -2205,7 +2205,8 @@ angular.module('icDirectives', [
 								icType:					"@",
 								icOptions:				"<",
 								icOptionLabel:			"&",
-								icIgnoreCurrentValue:	"<"
+								icIgnoreCurrentValue:	"<",	//Workaround, TODO
+								icForceNumber:			"<"		//Workaround, TODO
 							},
 
 			templateUrl: 	"partials/ic-item-edit-property.html",
@@ -2331,10 +2332,23 @@ angular.module('icDirectives', [
 				scope.$watch('icItem[icKey]', refreshValues, true)
 
 				scope.$watch('value.new', function(){
+
+					if(scope.icForceNumber){	//Workaround
+						if(!scope.value.new.match(/^\d*\.?\d{0,2}$/)){
+							scope.value.new = 	scope.value.new
+												.replace(/[^\d,.]/, '')
+												.replace(/,/,'.')
+												.replace(/^(\d*\.\d{2})\d*/, '$1')
+							scope.value.new = String((parseFloat(scope.value.new) || 0 ).toFixed(2))
+						}
+					}
+
 					if(scope.icTranslatable){
 						itemEdit[scope.icKey][icLanguages.currentLanguage] = scope.value.new
 					} else {
-						itemEdit[scope.icKey] = scope.value.new
+						itemEdit[scope.icKey] = scope.icForceNumber		//Workaround
+												?	String((parseFloat(scope.value.new) || 0 ).toFixed(2))
+												:	scope.value.new
 					}
 
 					itemEdit.validateKey(scope.icKey)

@@ -679,11 +679,20 @@ angular.module('InfoCompass').run(['$templateCache', function($templateCache) {
     "	<!-- misc -->\n" +
     "\n" +
     "	<ic-item-edit-property\n" +
-    "		ng-repeat				= \"key in ['price', 'maxParticipants', 'longitude', 'latitude']\"\n" +
+    "		ng-repeat				= \"key in ['maxParticipants', 'longitude', 'latitude']\"\n" +
     "		ic-type 				= \"string\"\n" +
     "		ic-key					= \"{{key}}\"\n" +
     "		ic-item					= \"item\"\n" +
     "		ic-translatable			= \"false\"\n" +
+    "	></ic-item-edit-property>\n" +
+    "\n" +
+    "	<ic-item-edit-property\n" +
+    "		ng-repeat				= \"key in ['price']\"\n" +
+    "		ic-type 				= \"string\"\n" +
+    "		ic-key					= \"{{key}}\"\n" +
+    "		ic-item					= \"item\"\n" +
+    "		ic-translatable			= \"false\"\n" +
+    "		ic-force-number			= \"true\"\n" +
     "	></ic-item-edit-property>\n" +
     "\n" +
     "\n" +

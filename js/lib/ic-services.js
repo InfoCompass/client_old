@@ -662,8 +662,9 @@ angular.module('icServices', [
 .service('icItem', [
 
 	'icApi',
+	'icUser', //Workaround, icItem should no require user information
 
-	function(icApi){
+	function(icApi, icUser){
 		return function IcItem(item_data){
 			var icItem					=	this,
 				rawStringProperties 	= 	{
@@ -764,6 +765,13 @@ angular.module('icServices', [
 				for(var key in rawStringProperties)	{ export_data[rawStringProperties[key]] = icItem[key] }
 				for(var key in rawHashes)			{ export_data[rawHashes[key]] 			= icItem[key] }							
 				for(var key in rawArrays)			{ export_data[rawArrays[key]] 			= icItem[key] }
+
+				//workaround, TODO: 
+				if(!export_data.status){
+					export_data.status = 	icUser.can('edit_items') || icUser.can('add_new_items')
+											?	'draft'
+											:	'suggestion'
+				}
 
 				return export_data
 			}
