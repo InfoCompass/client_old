@@ -442,6 +442,9 @@ angular.module('icMap', [
 					var previous_item	= previous,
 						item			= current
 
+
+					if(previous_item == item) return null
+
 					//remove previous item marker:
 					if(previous_item){
 						markers.getLayers(function(marker){
@@ -451,7 +454,11 @@ angular.module('icMap', [
 
 					//add current item marker:
 					if(item){
-						markers.addLayer(getMarker(item))
+						var marker_already_present = false
+						markers.getLayers(function(marker){
+							if(marker.options.item.id == item.id) marker_already_present = true
+						})
+						if(!marker_already_present)	markers.addLayer(getMarker(item))
 					}
 
 					//markers.refreshClusters()

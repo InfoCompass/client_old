@@ -359,6 +359,9 @@ angular.module('icDirectives', [
 					scope.editMode = true
 				}
 
+				scope.print	= function(){ window.print() 		}
+
+
 				scope.cancelEdit = function(){
 					if(scope.item.state == 'new'){
 						var confirm = $q.defer()
