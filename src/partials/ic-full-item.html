@@ -217,14 +217,14 @@
 		version					=	"3" 
 		error-correction-level	=	"M" 
 		size					=	"200" 
-		data					=	"{{item.id | icItemLink}}"
+		data					=	"{{item | icItemLink}}"
 		ng-if					=	"item"
 		ic-toggle-overlay		=	"qrcode"
 	>
 	</qrcode>
 
 	<div class ="link-to-item print-only">
-		{{item.id | icItemLink}}
+		{{item | icItemLink}}
 	</div>
 
 	<hr />
