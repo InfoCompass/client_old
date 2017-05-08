@@ -16,17 +16,27 @@ angular.module('plImages',[])
 
 			var self		= this, 
 				deferred 	= $q.defer(),
-				promises 	= []
+				promises 	= [],
+				list		= {}
 
 			urls.forEach(function(url){
 				var img 		= new Image(),
 					deferred	= $q.defer()
 
 
+				list[url] = true
+
 				promises.push(deferred.promise)	
 
 				img.addEventListener('load', function(){
-					deferred.resolve()
+					list[url] = false
+					deferred.resolve(url)
+					img = null
+				})
+
+				img.addEventListener('error', function(){
+					console.warn('plImages: unable to load '+url)
+					deferred.resolve(url)
 					img = null
 				})
 

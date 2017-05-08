@@ -242,16 +242,16 @@ angular.module('icInit', [
 		self.max		= 5
 
 		icConfigData.ready
-		.then(function(){ self.progress++ })		
+		.then(function(){ console.log('configdata'); self.progress++ })		
 		
 		icLanguages.ready
-		.then(function(){ self.progress++ })		
+		.then(function(){ console.log('languages'); self.progress++ })		
 
 		plImages.ready
-		.then(function(){ self.progress++ })
+		.then(function(){ console.log('images'); self.progress++ })
 
 		documentReady.promise
-		.then(function(){ self.progress++ })
+		.then(function(){ console.log('doc'); self.progress++ })
 
 
 		self.ready = $q.all([
