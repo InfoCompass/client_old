@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <title>topic/black_48/information</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="topic/black_48/information">
+            <g id="icon_information_b" transform="translate(20.000000, 9.000000)">
+                <g id="Layer_1">
+                    <circle id="Oval" stroke="#E86500" stroke-width="1.5" cx="4.25" cy="4" r="3.75"></circle>
+                    <path d="M6.5,28 C6.5,28.828 5.828,29.5 5,29.5 L3.5,29.5 C2.672,29.5 2,28.828 2,28 L2,14.5 C2,13.672 2.672,13 3.5,13 L5,13 C5.828,13 6.5,13.672 6.5,14.5 L6.5,28 L6.5,28 Z M8,28 L8,14.5 C8,12.843 6.657,11.5 5,11.5 L3.5,11.5 C1.843,11.5 0.5,12.843 0.5,14.5 L0.5,28 C0.5,29.657 1.843,31 3.5,31 L5,31 C6.657,31 8,29.657 8,28 L8,28 Z" id="Shape" fill="#E86500"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
