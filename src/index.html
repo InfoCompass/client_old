@@ -96,6 +96,8 @@
 				ic-print		= "icSite.activeItem 	&& (['XS', 'S'].indexOf(smlLayout.mode.name) != -1) && !icSite.switches.expandMap"
 				ic-share		= "icSite.activeItem 	&& (['XS', 'S'].indexOf(smlLayout.mode.name) != -1) && !icSite.switches.expandMap"
 				ic-large		= "!icSite.activeItem 	|| (['XS', 'S'].indexOf(smlLayout.mode.name) == -1)"
+				ic-logo			= "!icSite.displayedSections.page && ['XS'].indexOf(smlLayout.mode.name) == -1"
+				ic-search		= "['XS', 'S'].indexOf(smlLayout.mode.name) == -1"
 				ic-languages 	= "true"
 			></ic-header>
 		</header>

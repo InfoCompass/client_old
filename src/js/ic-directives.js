@@ -96,7 +96,9 @@ angular.module('icDirectives', [
 								icShare:		"<",
 								icPrint:		"<",
 								icLanguages:	"<",
-								icLarge:		"<"
+								icLarge:		"<",
+								icLogo:			"<",
+								icSearch:		"<",
 							},
 
 			link: function(scope, element, attr){
@@ -1114,8 +1116,8 @@ angular.module('icDirectives', [
 
 				if(scope.expandFilter){
 					scope.expand.topics 		= true
-					scope.expand.targetGroups 	= true
-					scope.expand.state			= true
+					scope.expand.targetGroups 	= false
+					scope.expand.state			= false
 
 					scope.open					=	scope.showSortOnly
 												?	'sort'

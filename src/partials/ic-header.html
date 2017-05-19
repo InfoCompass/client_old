@@ -14,11 +14,36 @@
 		ic-touch-me	
 	></button>
 
+	<button
+		ng-show				= "icSearch"
+		class 				= "fleft {{showSearch ? 'icon-nav-close' : ' text-right icon-nav-search'}} "
+		ng-click			= "showSearch = !showSearch"
+	>
+		<span
+			ng-if			= "!showSearch"
+		>
+			{{'INTERFACE.SEARCH' | translate }}
+		</span>
+	</button>
 
+	<ic-search 
+		ng-show				= "icSearch"
+		class				= "fleft {{showSearch ? 'active' : 'inactive'}}"
+	>
+	</ic-search>
+
+
+	<a class = "inline-logo"
+		ng-if = "icLogo"
+		href = "/"
+	>
+		<div class = "icon"></div>
+		<ic-text-logo></ic-text-logo>
+	</a>
 
 	<button 
 		type				= "button"
-		class 				= "icon-interface-share highlight"
+		class 				= "icon-interface-share"
 		ng-if				= "icShare"
 		ic-toggle-overlay	= "sharingMenu"
 		ic-touch-me	
@@ -26,7 +51,7 @@
 	
 	<button 
 		type				= "button"
-		class 				= "icon-interface-print highlight"
+		class 				= "icon-interface-print"
 		ng-if				= "icPrint"
 		ng-click			= "print()"
 		ic-touch-me	

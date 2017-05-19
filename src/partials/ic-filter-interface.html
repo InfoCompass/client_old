@@ -140,8 +140,8 @@
 		</a>
 		<a 
 			ng-repeat 	= "topic in icConfigData.topics | orderBy : 'toString()| uppercase | prepend: \'TOPICS.\' |translate'"
+			style		= "background-image: url({{topic | icIcon : 'topic' : icFilterConfig.matchFilter('topics', topic) ? 'color' : 'black'}});"
 			ng-click 	= "icFilterConfig.toggleFilter('topics', topic)" 
-			ng-class 	= "{'icon-interface-checkbox-selected' : icFilterConfig.matchFilter('topics', topic), 'icon-interface-checkbox': !icFilterConfig.matchFilter('topics', topic)}"
 			ic-touch-me			
 		>
 			{{topic | uppercase | prepend: "TOPICS." |translate}}

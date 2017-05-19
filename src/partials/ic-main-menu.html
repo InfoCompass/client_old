@@ -16,16 +16,18 @@
 	ic-home
 	ic-toggle-overlay 
 	ic-touch-me
-	class			= "heavy"
+	class			= "heavy bb"
 >
-	Home
+	{{'INTERFACE.HOME' | translate}}
 </a>
+
 
 <div>
 	<a 
 		ng-repeat 	= "type in ::icConfigData.types"
 		ng-href		= "/t/{{::type}}"
 		ng-click 	= "icOverlays.toggle()" 
+		class		= "shift"
 		ic-touch-me
 	>
 		<span 
