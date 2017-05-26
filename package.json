@@ -8,6 +8,7 @@
     "angular-qrcode": "^6.2.1",
     "angular-sanitize": "^1.6.2",
     "angular-translate": "^2.15.0",
+    "fs-extra": "^3.0.1",
     "grunt": "^1.0.1",
     "grunt-angular-templates": "^1.1.0",
     "grunt-contrib-concat": "^1.0.1",
@@ -22,6 +23,7 @@
     "leaflet": "^1.0.3",
     "leaflet.markercluster": "^1.0.3",
     "npm": "^4.3.0",
+    "rimraf": "^2.6.1",
     "roboto-fontface": "^0.7.0"
   },
   "scripts": {
