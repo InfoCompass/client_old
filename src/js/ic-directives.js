@@ -929,6 +929,7 @@ angular.module('icDirectives', [
 				case 'support':		return "/images/icon_"+p+"_support_"+c+".svg";		break;
 				case 'law':			return "/images/icon_"+p+"_law_"+c+".svg";			break;
 				case 'culture':		return "/images/icon_"+p+"_culture_"+c+".svg";		break;
+				case 'living':		return "/images/icon_"+p+"_habitation_"+c+".svg";	break;
 
 				case 'name':		return "/images/icon_"+p+"_name_"+c+".svg";			break;
 				case 'email':		return "/images/icon_"+p+"_email_"+c+".svg";		break;
